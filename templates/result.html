@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Scene — {{ entry.book_title }}{% endblock %}
+{% block content %}
+{# Step 2: show generated image and LLM scene interpretation from gallery entry #}
+<section class="card">
+  <h1>{{ entry.book_title }}</h1>
+  <p class="meta">by {{ entry.author }}</p>
+
+  <figure class="scene-image">
+    <img src="/media/generated/{{ entry.image_filename }}" alt="Generated scene">
+  </figure>
+
+  <details class="panel">
+    <summary>Passage</summary>
+    <p class="passage">{{ entry.passage }}</p>
+  </details>
+
+  <details class="panel" open>
+    <summary>Scene interpretation</summary>
+    <dl class="brief">
+      <dt>Setting</dt><dd>{{ entry.scene_brief.setting }}</dd>
+      <dt>Time</dt><dd>{{ entry.scene_brief.time_of_day }}</dd>
+      <dt>Mood</dt><dd>{{ entry.scene_brief.mood }}</dd>
+      <dt>Camera</dt><dd>{{ entry.scene_brief.camera }}</dd>
+      {% if entry.scene_brief.characters_visible %}
+      <dt>Characters</dt><dd>{{ entry.scene_brief.characters_visible | join(', ') }}</dd>
+      {% endif %}
+      {% if entry.scene_brief.ambiguities %}
+      <dt>Ambiguities</dt><dd>{{ entry.scene_brief.ambiguities | join('; ') }}</dd>
+      {% endif %}
+    </dl>
+    <p class="prompt-label">Image prompt</p>
+    <p class="prompt">{{ entry.scene_brief.image_prompt }}</p>
+  </details>
+
+  <div class="actions">
+    <a href="/" class="btn primary">Scan another page</a>
+    <a href="/gallery" class="btn ghost">Gallery</a>
+  </div>
+</section>
+{% endblock %}

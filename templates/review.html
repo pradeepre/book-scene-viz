@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Review text — Book Scene Viz{% endblock %}
+{% block content %}
+{# Step 1: user corrects OCR, adds book metadata; POST /generate calls OpenAI #}
+<section class="card">
+  <h1>Review extracted text</h1>
+  {% if error %}
+  <p class="error">{{ error }}</p>
+  {% endif %}
+
+  {% if upload_filename %}
+  {# Original screenshot for side-by-side comparison while editing OCR text #}
+  <figure class="preview">
+    <img src="/media/uploads/{{ upload_filename }}" alt="Uploaded page">
+  </figure>
+  {% endif %}
+
+  <form action="/generate" method="post" class="stack">
+    {# Keeps link to upload on result page when OCR was used #}
+    <input type="hidden" name="upload_filename" value="{{ upload_filename or '' }}">
+
+    <label class="field">
+      <span>Book title</span>
+      <input type="text" name="book_title" value="{{ book_title or '' }}" placeholder="e.g. The Name of the Wind" required>
+    </label>
+
+    <label class="field">
+      <span>Author</span>
+      <input type="text" name="author" value="{{ author or '' }}" placeholder="e.g. Patrick Rothfuss" required>
+    </label>
+
+    <label class="field">
+      <span>Passage (edit OCR mistakes here)</span>
+      <textarea name="passage" rows="12" required>{{ passage }}</textarea>
+    </label>
+
+    <div class="actions">
+      <a href="/" class="btn ghost">Start over</a>
+      <button type="submit" class="btn primary">Generate scene</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

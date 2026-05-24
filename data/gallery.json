@@ -1,0 +1,63 @@
+[
+  {
+    "id": "894be158ff8b4544a7401a23349138f7",
+    "created_at": "2026-05-24T10:47:38.360309+00:00",
+    "book_title": "Killing Floor",
+    "author": "Lee Child",
+    "passage": "A fat guy sat at a big rosewood desk. benind nim\r\nwere a couple of big flags. \u2018There was a Stars and\r\nStripes with a gold fringe on the left and what I\r\nguessed was the Georgia state flag on the right. On\r\nthe wall between the flags was a clock. It was a big\r\nold round thing framed in mahogany. Looked like\r\nit had decades of polish on it. I figured it must be\r\nthe clock from whatever old station house they bull-\r\ndozed to build this new place. I figured the\r\narchitect had used it to give a sense of history to\r\nthe new building. It was showing nearly twelve-\r\nthirty.",
+    "scene_brief": {
+      "setting": "an office",
+      "time_of_day": "nearly twelve-thirty",
+      "weather": "not specified",
+      "characters_visible": [
+        "fat guy"
+      ],
+      "objects": [
+        "big rosewood desk",
+        "Stars and Stripes flag",
+        "Georgia state flag",
+        "big old round clock",
+        "mahogany frame"
+      ],
+      "mood": "observational",
+      "camera": "medium",
+      "ambiguities": [
+        "The identity of the fat guy",
+        "The significance of the flags",
+        "The location of the office"
+      ],
+      "image_prompt": "A spacious office featuring a large, polished rosewood desk at the center. Behind the desk, two prominent flags stand tall: one is the Stars and Stripes adorned with a gold fringe, and the other is the Georgia state flag, vibrant and proud. On the wall between the flags, an antique round clock, framed in rich mahogany, ticks away the time, its surface gleaming with decades of polish. The atmosphere is one of authority and history, with the clock indicating nearly twelve-thirty."
+    },
+    "image_filename": "c1af4bd0e68241beafddf0144563aa04.png",
+    "upload_filename": "bb0747dc6dab4d61a9c16dce516225d3.jpeg"
+  },
+  {
+    "id": "b232b1388c304e719e593aba99ea1b18",
+    "created_at": "2026-05-23T10:35:32.988466+00:00",
+    "book_title": "Killing Floor",
+    "author": "Lee Child",
+    "passage": "The diner was small, but bright and clean. Brand new, built to resemble a converted railroad car. Narrow, with long lunch counter on one side and a kitchen bumped out back. Booths lining the opposite wall. A doorway where the centre booth would be.",
+    "scene_brief": {
+      "setting": "a small diner resembling a converted railroad car",
+      "time_of_day": "not specified",
+      "weather": "not specified",
+      "characters_visible": [],
+      "objects": [
+        "long lunch counter",
+        "kitchen",
+        "booths",
+        "doorway"
+      ],
+      "mood": "bright and clean",
+      "camera": "wide",
+      "ambiguities": [
+        "time of day",
+        "weather",
+        "characters present"
+      ],
+      "image_prompt": "A small, bright diner designed to look like a converted railroad car. The interior features a long, shiny lunch counter on one side, with a small kitchen area bumped out at the back. On the opposite wall, cozy booths are lined up, inviting patrons to sit and enjoy their meals. A doorway stands prominently where the center booth would be, suggesting a welcoming entrance to this clean and modern establishment."
+    },
+    "image_filename": "95e7556bec03482d9424858db7bab0da.png",
+    "upload_filename": null
+  }
+]

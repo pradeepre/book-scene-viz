@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Upload — Book Scene Viz{% endblock %}
+{% block content %}
+{# Step 0: user picks a photo; POST /ocr runs Tesseract and opens review.html #}
+<section class="card">
+  <h1>Visualize a passage</h1>
+  <p class="lede">Upload a screenshot of a paragraph from your physical book. We’ll read the text, let you fix it, then generate a scene image.</p>
+
+  <form action="/ocr" method="post" enctype="multipart/form-data" class="stack">
+    <label class="field">
+      <span>Screenshot (PNG, JPG, HEIC)</span>
+      <input type="file" name="screenshot" accept="image/*" required>
+    </label>
+    <button type="submit" class="btn primary">Extract text</button>
+  </form>
+
+  <p class="alt-link"><a href="/paste">Paste passage manually</a> (skip OCR — handy for testing)</p>
+
+  <ol class="steps">
+    <li>Upload page photo</li>
+    <li>Review &amp; edit OCR text</li>
+    <li>Enter book &amp; author</li>
+    <li>Generate scene</li>
+  </ol>
+</section>
+{% endblock %}

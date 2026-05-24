@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Gallery — Book Scene Viz{% endblock %}
+{% block content %}
+{# Thumbnail grid of saved scenes; each links back to /result/{id} #}
+<section class="card">
+  <h1>Gallery</h1>
+  {% if not entries %}
+  <p class="lede">No scenes yet. <a href="/">Upload your first screenshot</a>.</p>
+  {% else %}
+  <ul class="gallery-grid">
+    {% for e in entries %}
+    <li>
+      <a href="/result/{{ e.id }}">
+        <img src="/media/generated/{{ e.image_filename }}" alt="">
+        <span class="caption">{{ e.book_title }}</span>
+        <span class="sub">{{ e.author }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+{% endblock %}
