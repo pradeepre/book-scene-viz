@@ -1,0 +1,29 @@
+# Secrets and local config
+.env
+.env.local
+.env.*.local
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Runtime data (uploads, generated images, local gallery)
+data/uploads/*
+data/generated/*
+data/gallery.json
+!data/uploads/.gitkeep
+!data/generated/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
