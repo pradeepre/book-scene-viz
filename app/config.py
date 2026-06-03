@@ -27,5 +27,15 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Scene interpretation 
 OPENAI_IMAGE_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-1")  # Image generation
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "").strip() or None  # Optional proxy / Azure-style endpoint
 
-# Demo mode skips paid API calls and uses placeholder scene + image (no key required).
+# --- Image generation provider: openai | ollama ---
+IMAGE_PROVIDER = os.getenv("IMAGE_PROVIDER", "openai").strip().lower()
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").strip()
+OLLAMA_IMAGE_MODEL = os.getenv("OLLAMA_IMAGE_MODEL", "x/flux2-klein:4b")
+OLLAMA_IMAGE_WIDTH = int(os.getenv("OLLAMA_IMAGE_WIDTH", "1024"))
+OLLAMA_IMAGE_HEIGHT = int(os.getenv("OLLAMA_IMAGE_HEIGHT", "1024"))
+_steps = os.getenv("OLLAMA_IMAGE_STEPS", "").strip()
+OLLAMA_IMAGE_STEPS = int(_steps) if _steps else None
+
+# Demo mode skips paid OpenAI calls and uses placeholder scene + image (no key required).
+# Scene brief still uses OpenAI unless DEMO_MODE=1; only image step respects IMAGE_PROVIDER=ollama.
 DEMO_MODE = os.getenv("DEMO_MODE", "0") == "1" or not OPENAI_API_KEY

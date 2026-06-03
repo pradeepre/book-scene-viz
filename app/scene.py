@@ -17,10 +17,12 @@ from typing import Any
 from app.config import (
     DEMO_MODE,
     GENERATED_DIR,
+    IMAGE_PROVIDER,
     OPENAI_IMAGE_MODEL,
     OPENAI_MODEL,
 )
 from app.http_client import make_httpx_client
+from app.ollama_client import generate_image_ollama
 from app.openai_client import get_openai_client
 
 # Instructs the LLM to stay spoiler-safe and ground visuals in the passage only.
@@ -117,8 +119,13 @@ def generate_image(image_prompt: str) -> tuple[Path, str | None]:
     filename = f"{uuid.uuid4().hex}.png"
     out_path = GENERATED_DIR / filename
 
-    if DEMO_MODE:
+    if DEMO_MODE and IMAGE_PROVIDER != "ollama":
         _write_placeholder_png(out_path, image_prompt)
+        return out_path, None
+
+    if IMAGE_PROVIDER == "ollama":
+        image_bytes = generate_image_ollama(image_prompt)
+        out_path.write_bytes(image_bytes)
         return out_path, None
 
     model = OPENAI_IMAGE_MODEL

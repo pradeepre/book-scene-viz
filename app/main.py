@@ -19,7 +19,15 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app.config import DEMO_MODE, GENERATED_DIR, OPENAI_API_KEY, ROOT, UPLOAD_DIR
+from app.config import (
+    DEMO_MODE,
+    GENERATED_DIR,
+    IMAGE_PROVIDER,
+    OPENAI_API_KEY,
+    ROOT,
+    UPLOAD_DIR,
+)
+from app.ollama_client import check_ollama_health
 from app.gallery import add_entry, get_entry, list_entries
 from app.http_client import format_api_error
 from app.ocr import OcrError, extract_text
@@ -205,6 +213,17 @@ async def health_ocr():
                 f"Technical detail: {exc}"
             ),
         }
+
+
+@app.get("/health/ollama")
+async def health_ollama():
+    """Diagnostic: Ollama running and configured image model pulled locally."""
+    if IMAGE_PROVIDER != "ollama":
+        return {
+            "ok": True,
+            "message": f"IMAGE_PROVIDER is '{IMAGE_PROVIDER}' — Ollama check skipped",
+        }
+    return check_ollama_health()
 
 
 @app.get("/health/openai")

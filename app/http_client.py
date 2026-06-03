@@ -40,23 +40,38 @@ def make_httpx_client(**kwargs: Any) -> httpx.Client:
     return httpx.Client(verify=verify, timeout=kwargs.pop("timeout", 120.0), **kwargs)
 
 
+def _full_error_text(exc: BaseException) -> str:
+    """Collect message from exception and its cause chain (OpenAI SDK often hides SSL detail)."""
+    parts: list[str] = []
+    current: BaseException | None = exc
+    while current is not None:
+        text = str(current).strip()
+        if text and text not in parts:
+            parts.append(text)
+        current = current.__cause__
+    return " ".join(parts) or exc.__class__.__name__
+
+
 def format_api_error(exc: BaseException) -> str:
     """Turn SDK/network errors into actionable messages shown on the review page."""
-    message = str(exc).strip() or exc.__class__.__name__
+    message = _full_error_text(exc)
 
-    if "CERTIFICATE_VERIFY_FAILED" in message or "certificate verify failed" in message:
+    if "CERTIFICATE_VERIFY_FAILED" in message or "certificate verify failed" in message.lower():
         return (
             "TLS certificate verification failed when calling OpenAI. "
-            "This often happens on corporate networks with SSL inspection.\n\n"
-            "Try one of these (in .env), then restart the server:\n"
-            "  1. SSL_CERT_FILE=/path/to/your-corporate-ca-bundle.pem\n"
-            "  2. OPENAI_SSL_VERIFY=0   (disables verification — use only if you trust the network)\n\n"
+            "This often happens on corporate networks with SSL inspection (Zscaler, etc.).\n\n"
+            "Add to .env and restart the server:\n"
+            "  OPENAI_SSL_VERIFY=0\n\n"
+            "Or use your company CA bundle (safer):\n"
+            "  SSL_CERT_FILE=/path/to/corporate-ca-bundle.pem\n\n"
             f"Technical detail: {message}"
         )
 
     if "Connection error" in message or isinstance(exc, (httpx.ConnectError, httpx.ConnectTimeout)):
         return (
-            "Could not reach the OpenAI API. Check internet access, VPN, firewall, or proxy settings.\n\n"
+            "Could not reach the OpenAI API. On corporate laptops this is usually fixed by "
+            "adding OPENAI_SSL_VERIFY=0 to .env and restarting.\n\n"
+            "Also check VPN, firewall, and proxy settings.\n\n"
             f"Technical detail: {message}"
         )
 
