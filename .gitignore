@@ -1,8 +1,9 @@
 # Secrets and local config
 .env
-.env*
 .env.local
 .env.*.local
+.env.openai
+!.env.example
 
 # Python
 .venv/

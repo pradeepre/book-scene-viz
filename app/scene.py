@@ -27,17 +27,21 @@ from app.openai_client import get_openai_client
 
 # Instructs the LLM to stay spoiler-safe and ground visuals in the passage only.
 SCENE_SYSTEM_PROMPT = """You are a literary scene interpreter for fiction readers.
-Given a book title, author, and a single passage from the book, produce a JSON object only.
+Given a book title, author, an optional style_profile, and a single passage, produce a JSON object only.
 
 Rules:
 - Use ONLY details stated or clearly implied in the passage. Do not use outside plot knowledge.
 - Do not spoil events beyond this passage.
 - If something is ambiguous, list it in "ambiguities".
+- When style_profile is provided (pre-loaded author preset), reflect its prose_style, narrative_tone, and visual_aesthetic.
+- image_prompt must match that author's typical visual world (palette, lighting, texture, genre).
+- If style_profile is provided, include style_lock: one sentence of art-direction aligned with that preset (no spoilers).
 - image_prompt must be one paragraph, vivid, grounded, no text in the image, no logos.
 
 Return valid JSON with keys:
 setting, time_of_day, weather, characters_visible (array), objects (array),
 mood, camera (wide|medium|close), ambiguities (array), image_prompt (string).
+Include style_lock (string) only when style_profile was provided; otherwise omit it or use empty string.
 """
 
 
@@ -65,6 +69,7 @@ def build_scene_brief(
     passage: str,
     book_title: str,
     author: str,
+    style_profile: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """
     Ask the chat model to interpret the passage into structured scene metadata.
@@ -75,14 +80,21 @@ def build_scene_brief(
         return _demo_scene(passage, book_title, author)
 
     client = get_openai_client()
-    user_content = json.dumps(
-        {
-            "book_title": book_title,
-            "author": author,
-            "passage": passage,
-        },
-        ensure_ascii=False,
-    )
+    payload: dict[str, Any] = {
+        "book_title": book_title,
+        "author": author,
+        "passage": passage,
+    }
+    if style_profile:
+        payload["style_profile"] = {
+            "prose_style": style_profile.get("prose_style"),
+            "narrative_tone": style_profile.get("narrative_tone"),
+            "visual_aesthetic": style_profile.get("visual_aesthetic"),
+            "recurring_motifs": style_profile.get("recurring_motifs"),
+            "image_style_suffix": style_profile.get("image_style_suffix"),
+            "user_notes": style_profile.get("user_notes"),
+        }
+    user_content = json.dumps(payload, ensure_ascii=False)
     response = client.chat.completions.create(
         model=OPENAI_MODEL,
         response_format={"type": "json_object"},

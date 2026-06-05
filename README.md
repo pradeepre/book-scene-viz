@@ -82,6 +82,12 @@ Open http://127.0.0.1:8000
 
 Check OCR before uploading: http://127.0.0.1:8000/health/ocr
 
+## Author style presets
+
+Pre-loaded styles live in **`data/author_styles.json`**. When the **Author** field matches a known name (e.g. `Patrick Rothfuss`, `Sanderson`), scene interpretation and images use that preset. Unknown authors use the default passage-only pipeline.
+
+To add an author, edit `author_styles.json` (see `names` aliases and `image_style_suffix`).
+
 ## Flow
 
 1. **/** — upload screenshot

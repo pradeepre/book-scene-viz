@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 UPLOAD_DIR = ROOT / "data" / "uploads"       # Original page screenshots
 GENERATED_DIR = ROOT / "data" / "generated"  # Saved scene images (PNG)
 GALLERY_PATH = ROOT / "data" / "gallery.json"  # Simple local history store
+AUTHOR_STYLES_PATH = ROOT / "data" / "author_styles.json"  # Bundled author style presets
 
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 GENERATED_DIR.mkdir(parents=True, exist_ok=True)

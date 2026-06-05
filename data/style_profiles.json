@@ -1,0 +1,17 @@
+{
+  "lee-child-killing-floor": {
+    "author": "Lee Child",
+    "book_title": "Killing Floor",
+    "prose_style": "Demo \u2014 connect OPENAI_API_KEY for real style inference",
+    "narrative_tone": "atmospheric fiction",
+    "visual_aesthetic": "soft painterly illustration, cinematic lighting",
+    "recurring_motifs": [
+      "atmospheric",
+      "as described in the scanned passage"
+    ],
+    "image_style_suffix": "Consistent literary illustration for Killing Floor by Lee Child. Painterly, cohesive palette, no text.",
+    "user_notes": "He uses hyper-short sentences (e.g., single-word sentences like \"Friday.\"). Scenes are sparse, focusing on raw utility.\r\nGritty Realism. Settings are often monochromatic or muted\u2014dusty highway diners, dim motels, sterile military offices, or stark neon-lit city streets at night.\r\nThe Archetypal Nomad. Characters (especially Reacher) are described through their clothes and physical presence rather than emotional expressions. Clothing is utilitarian (e.g., plain t-shirts, heavy boots).\r\nExtreme Detail in Compressed Time. Child will spend three pages describing a 2-second physical altercation, noting structural weight, geometry, and impact.",
+    "passage_count": 1,
+    "updated_at": "2026-06-04T10:13:49.621642+00:00"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "authors": [
+    {
+      "id": "patrick-rothfuss",
+      "names": ["Patrick Rothfuss", "Rothfuss"],
+      "prose_style": "Lush, sensory prose with precise physical detail, musical rhythm, and intimate emotional interiority.",
+      "narrative_tone": "Epic fantasy told through reflective first-person; melancholy wonder and slow-burn tension.",
+      "visual_aesthetic": "Warm candlelit interiors, worn medieval textures, soft golden light, painterly realism with storybook warmth.",
+      "recurring_motifs": ["lamplight", "stone archways", "travel-worn fabrics", "mist"],
+      "image_style_suffix": "Painterly epic-fantasy illustration, warm chiaroscuro, tactile fabrics and wood, no modern elements, no text."
+    },
+    {
+      "id": "brandon-sanderson",
+      "names": ["Brandon Sanderson", "Sanderson"],
+      "prose_style": "Clear, purposeful prose emphasizing spatial logic, action choreography, and systematic world rules.",
+      "narrative_tone": "Optimistic epic fantasy with momentum; awe at scale and clever problem-solving.",
+      "visual_aesthetic": "Crisp cinematic clarity, dramatic skies, bold silhouettes, high contrast, slightly stylized realism.",
+      "recurring_motifs": ["storms", "stone cities", "uniforms", "vast horizons"],
+      "image_style_suffix": "Cinematic high-fantasy concept art, sharp lighting, grand scale, clean composition, no text."
+    },
+    {
+      "id": "j-r-r-tolkien",
+      "names": ["J.R.R. Tolkien", "J. R. R. Tolkien", "Tolkien", "John Ronald Reuel Tolkien"],
+      "prose_style": "Archaic, pastoral cadence with genealogical depth, landscape poetry, and mythic weight.",
+      "narrative_tone": "High mythic quest; solemn beauty, looming shadow, and homely respite.",
+      "visual_aesthetic": "Pastoral English countryside meets ancient grandeur; muted greens and golds, illustrative realism.",
+      "recurring_motifs": ["rolling hills", "ancient trees", "weathered road", "distant mountains"],
+      "image_style_suffix": "Classic illustrative fantasy, muted earth palette, mythic landscape, pre-industrial, no text."
+    },
+    {
+      "id": "george-r-r-martin",
+      "names": ["George R. R. Martin", "GRRM", "Martin"],
+      "prose_style": "Grounded, visceral detail; political tension; food, weather, and body language carry mood.",
+      "narrative_tone": "Gritty medieval realism; moral ambiguity, court intrigue, sudden violence.",
+      "visual_aesthetic": "Desaturated medieval grit, cold northern light, mud, fur, steel, candle smoke.",
+      "recurring_motifs": ["castle halls", "rain", "torches", "fur cloaks"],
+      "image_style_suffix": "Gritty medieval realism, desaturated palette, tactile costume detail, no glamour, no text."
+    },
+    {
+      "id": "stephen-king",
+      "names": ["Stephen King", "King"],
+      "prose_style": "Conversational Americana with sharp character observation and ordinary settings turned uncanny.",
+      "narrative_tone": "Domestic thriller-horror; slow dread, small-town familiarity, sudden wrongness.",
+      "visual_aesthetic": "1980s American suburban or rural realism; fluorescent or streetlight at night, muted color.",
+      "recurring_motifs": ["porches", "pickup trucks", "fluorescent glow", "woods at dusk"],
+      "image_style_suffix": "Cinematic Americana horror still, naturalistic lighting, subtle unease, contemporary-real, no text."
+    },
+    {
+      "id": "agatha-christie",
+      "names": ["Agatha Christie", "Christie"],
+      "prose_style": "Economical, dialogue-driven clarity; social manners and clipped observation over lush description.",
+      "narrative_tone": "Cozy mystery; restrained emotion, ironic politeness, puzzle-box plotting.",
+      "visual_aesthetic": "Interwar English drawing rooms; soft daylight, wallpaper, tea service, composed staging.",
+      "recurring_motifs": ["tea tables", "trains", "country houses", "gloves and hats"],
+      "image_style_suffix": "Period mystery illustration, 1920s–40s English interiors, soft daylight, elegant restraint, no text."
+    },
+    {
+      "id": "neil-gaiman",
+      "names": ["Neil Gaiman", "Gaiman"],
+      "prose_style": "Fairy-tale logic in modern voice; wit, shadow, and myth folded into everyday places.",
+      "narrative_tone": "Dark whimsy; liminal worlds bleeding into reality; gentle menace.",
+      "visual_aesthetic": "Dreamlike contrast, fog, Victorian edges, surreal scale shifts, ink-and-moonlight mood.",
+      "recurring_motifs": ["fog", "doorways", "moonlight", "crowds at night"],
+      "image_style_suffix": "Dark fairytale concept art, ink-wash atmosphere, surreal but readable, no text."
+    },
+    {
+      "id": "tolkien-influence-uk-fantasy",
+      "names": ["Susanna Clarke", "Clarke"],
+      "prose_style": "Formal, antiquarian prose with footnote density and dry wit; magic as bureaucratic or historical.",
+      "narrative_tone": "Literary historical fantasy; restrained wonder, academic distance, English weather.",
+      "visual_aesthetic": "Regency and Georgian architecture; rain-soaked stone, muted sepia, engraving-like detail.",
+      "recurring_motifs": ["Yorkshire rain", "books", "cobblestones", "candles in study"],
+      "image_style_suffix": "Literary historical fantasy, engraving-influenced detail, muted sepia-rain palette, no text."
+    },
+    {
+      "id": "dan-brown",
+      "names": ["Dan Brown", "Brown"],
+      "prose_style": "Brisk, expository thriller prose; short chapters, art-history and symbol detail, clock-ticking momentum.",
+      "narrative_tone": "High-stakes conspiracy puzzle; scholarly heroes racing institutions through famous European landmarks.",
+      "visual_aesthetic": "Cinematic photorealism; marble cathedrals, crypts, Renaissance art, night rain on stone, gold and shadow.",
+      "recurring_motifs": ["obelisks", "church interiors", "codes and symbols", "crowded piazzas at night"],
+      "image_style_suffix": "Cinematic conspiracy-thriller still, European sacred architecture, dramatic night rain, photoreal, no text."
+    },
+    {
+      "id": "lee-child",
+      "names": ["Lee Child", "Child"],
+      "prose_style": "Sparse, declarative sentences; physical logistics, distance and scale; dialogue as blunt instrument.",
+      "narrative_tone": "Lone drifter procedural; moral clarity, sudden violence, American roads and small towns.",
+      "visual_aesthetic": "Bleach-bright daylight or harsh motel neon; wide empty landscapes, concrete, buses, diners, minimal color.",
+      "recurring_motifs": ["highways", "bus stations", "cheap motels", "wide shoulders and sky"],
+      "image_style_suffix": "Gritty American thriller cinematography, stark daylight or sodium-vapor night, empty space, realistic, no text."
+    }
+  ]
+}

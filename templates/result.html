@@ -15,6 +15,23 @@
     <p class="passage">{{ entry.passage }}</p>
   </details>
 
+  {% if entry.author_preset %}
+  <details class="panel">
+    <summary>Author preset applied</summary>
+    <dl class="brief">
+      <dt>Preset</dt><dd>{{ entry.author_preset.preset_id }}</dd>
+      <dt>Prose</dt><dd>{{ entry.author_preset.prose_style }}</dd>
+      <dt>Tone</dt><dd>{{ entry.author_preset.narrative_tone }}</dd>
+      <dt>Visual aesthetic</dt><dd>{{ entry.author_preset.visual_aesthetic }}</dd>
+      {% if entry.author_preset.recurring_motifs %}
+      <dt>Motifs</dt><dd>{{ entry.author_preset.recurring_motifs | join(', ') }}</dd>
+      {% endif %}
+    </dl>
+    <p class="prompt-label">Image style suffix</p>
+    <p class="prompt">{{ entry.author_preset.image_style_suffix }}</p>
+  </details>
+  {% endif %}
+
   <details class="panel" open>
     <summary>Scene interpretation</summary>
     <dl class="brief">
@@ -27,6 +44,9 @@
       {% endif %}
       {% if entry.scene_brief.ambiguities %}
       <dt>Ambiguities</dt><dd>{{ entry.scene_brief.ambiguities | join('; ') }}</dd>
+      {% endif %}
+      {% if entry.scene_brief.style_lock %}
+      <dt>Style lock</dt><dd>{{ entry.scene_brief.style_lock }}</dd>
       {% endif %}
     </dl>
     <p class="prompt-label">Image prompt</p>

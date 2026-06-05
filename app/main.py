@@ -33,6 +33,11 @@ from app.http_client import format_api_error
 from app.ocr import OcrError, extract_text
 from app.openai_client import get_openai_client
 from app.scene import build_scene_brief, generate_image
+from app.author_presets import (
+    apply_style_to_image_prompt,
+    get_author_preset,
+    list_preset_authors,
+)
 
 app = FastAPI(title="Book Scene Viz", version="0.1.0")
 templates = Jinja2Templates(directory=str(ROOT / "templates"))
@@ -115,7 +120,6 @@ async def generate_step(
     book_title = book_title.strip()
     author = author.strip()
     passage = passage.strip()
-
     if not book_title or not author:
         return templates.TemplateResponse(
             request,
@@ -146,8 +150,14 @@ async def generate_step(
         )
 
     try:
-        scene_brief = build_scene_brief(passage, book_title, author)
-        image_prompt = scene_brief.get("image_prompt") or passage
+        author_preset = get_author_preset(author)
+        scene_brief = build_scene_brief(
+            passage, book_title, author, style_profile=author_preset
+        )
+        image_prompt = apply_style_to_image_prompt(
+            scene_brief.get("image_prompt") or passage,
+            author_preset,
+        )
         image_path, _remote = generate_image(image_prompt)
         entry = add_entry(
             book_title=book_title,
@@ -156,6 +166,7 @@ async def generate_step(
             scene_brief=scene_brief,
             image_filename=image_path.name,
             upload_filename=upload_filename or None,
+            author_preset=author_preset,
         )
     except Exception as exc:  # noqa: BLE001 — surface actionable message in UI
         return templates.TemplateResponse(
@@ -187,6 +198,12 @@ async def result(request: Request, entry_id: str):
         "result.html",
         {"entry": entry, "demo_mode": DEMO_MODE},
     )
+
+
+@app.get("/health/authors")
+async def health_authors():
+    """List author names with pre-loaded style presets in data/author_styles.json."""
+    return {"authors": list_preset_authors()}
 
 
 @app.get("/health/ocr")

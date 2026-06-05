@@ -32,6 +32,7 @@ def add_entry(
     scene_brief: dict[str, Any],
     image_filename: str,
     upload_filename: str | None = None,
+    author_preset: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Append a new scene to the gallery (newest first) and return the record."""
     entry = {
@@ -43,6 +44,7 @@ def add_entry(
         "scene_brief": scene_brief,
         "image_filename": image_filename,
         "upload_filename": upload_filename,
+        "author_preset": author_preset,
     }
     entries = _load()
     entries.insert(0, entry)  # Most recent at top for gallery UI
